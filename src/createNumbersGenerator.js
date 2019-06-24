@@ -39,11 +39,6 @@ function createNumbersGenerator(numbers, min, max) {
     const result = matchedNumbers.shift();
     return result;
   };
-  // return function () {
-  //   index += 1;
-
-  //   return matchedNumbers[index - 1];
-  // };
 }
 
 module.exports = createNumbersGenerator;
