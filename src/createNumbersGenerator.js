@@ -27,12 +27,13 @@
  */
 function createNumbersGenerator(numbers = [], min = 0, max = 0) {
   // write code here
+  const newArr = numbers;
   return () => {
-    const index = numbers.indexOf(numbers.find(n => n >= min && n <= max));
+    const index = newArr.indexOf(numbers.find(n => n >= min && n <= max));
     return index !== -1
-      ? numbers.splice(index, 1)[0]
-      : !min && numbers.length
-        ? numbers.shift() : undefined;
+      ? newArr.splice(index, 1)[0]
+      : !min && newArr.length
+        ? newArr.shift() : undefined;
   };
 }
 
