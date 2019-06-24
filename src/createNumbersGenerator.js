@@ -28,7 +28,7 @@
 function createNumbersGenerator(numbers, min, max) {
   let currentNumber;
   let start = 0;
-  function getNumber() {
+  return function() {
     if (!numbers) {
       return;
     }
@@ -44,8 +44,6 @@ function createNumbersGenerator(numbers, min, max) {
       return currentNumber;
     }
   }
-
-  return getNumber;
 }
 
 module.exports = createNumbersGenerator;
