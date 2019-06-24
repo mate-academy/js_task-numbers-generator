@@ -1,5 +1,4 @@
 'use strict';
-
 /**
  * Write a function (factory) creating a function (device) returning a number
  * from an array given to a factory. Each device call should return the next
@@ -25,8 +24,17 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
-  // write code here
-}
-
+function createNumbersGenerator(numbers = [], min, max) {
+  let index = -1;
+  const filterFromMinToMax = element => (element >= min) && (element <= max);
+  return () => {
+    const filteredArray = numbers.filter(filterFromMinToMax);
+    index++;
+    if (!min && !max) {
+      return numbers[index];
+    } else {
+      return filteredArray[index];
+    }
+  };
+};
 module.exports = createNumbersGenerator;
