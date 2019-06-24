@@ -25,8 +25,15 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
+function createNumbersGenerator(numbers = [], min = 0, max = 0) {
   // write code here
+  return () => {
+    const index = numbers.indexOf(numbers.find(n => n >= min && n <= max));
+    return index !== -1
+      ? numbers.splice(index, 1)[0]
+      : !min && numbers.length
+        ? numbers.shift() : undefined;
+  };
 }
 
 module.exports = createNumbersGenerator;
