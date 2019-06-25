@@ -26,19 +26,18 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers, min, max) {
-  let numbersArr = numbers;
+  const numbersArr = numbers;
   let i = -1;
-  if (arguments.length > 1) {
-    numbersArr = numbers.slice(min - 1, max);
-  }
   return () => {
     if (numbersArr === undefined) {
       return undefined;
     }
-    if (numbersArr[i + 1] === 0) {
+    if (arguments.length > 2) {
+      const minMaxNumbersArr = numbersArr.filter(item => {
+        return item >= min && item <= max;
+      });
       i++;
-      i++;
-      return numbersArr[i];
+      return minMaxNumbersArr[i];
     }
     i++;
     return numbersArr[i];
