@@ -28,7 +28,7 @@
 function createNumbersGenerator(numbers = [], min, max) {
   // write code here
   let numsStorage = [...numbers];
-  if (min !== undefined || max !== undefined) {
+  if (min !== undefined && max !== undefined) {
     numsStorage = [...numbers].filter(el => el >= min && el <= max);
   }
 
