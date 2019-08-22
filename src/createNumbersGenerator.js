@@ -33,6 +33,7 @@ function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
     if (numberList === undefined) {
       return undefined;
     }
+
     const filterNumberList = numberList.filter((element) => {
       return (element >= min && element <= max);
     });
