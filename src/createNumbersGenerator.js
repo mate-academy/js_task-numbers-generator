@@ -25,8 +25,11 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
-  // write code here
+function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
+  let elemCounter = 0;
+
+  return () => numbers === undefined ? undefined : numbers
+    .filter((elem) => elem >= min && elem <= max)[elemCounter++];
 }
 
 module.exports = createNumbersGenerator;
