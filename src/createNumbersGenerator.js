@@ -26,7 +26,11 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers, min, max) {
-  // write code here
+  const numberListForGenerate = numbers
+    .filter(number => number >= min && number <= max);
+  let numberOfCallGenerator = 0;
+
+  return () => numberListForGenerate[numberOfCallGenerator++];
 }
 
 module.exports = createNumbersGenerator;
