@@ -25,13 +25,11 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
-  const arrNumbers = typeof min === 'number' && typeof max === 'number'
-    ? numbers.filter(num => num >= min && num <= max)
-    : numbers;
+function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
+  const arrNumbers = numbers.filter(num => num >= min && num <= max);
 
   return () => {
-    return numbers === undefined ? undefined : arrNumbers.splice(0, 1)[0];
+    return numbers === [] ? undefined : arrNumbers.splice(0, 1)[0];
   };
 }
 
