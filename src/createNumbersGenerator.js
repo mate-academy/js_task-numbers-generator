@@ -31,11 +31,7 @@ function createNumbersGenerator(numbers, min, max) {
     : numbers;
 
   function takeMinMaxNumbers() {
-    if (numbers === undefined) {
-      return undefined;
-    } else {
-      return arrNumbers.splice(0, 1)[0];
-    }
+    return numbers === undefined ? undefined : arrNumbers.splice(0, 1)[0];
   }
 
   return takeMinMaxNumbers;
