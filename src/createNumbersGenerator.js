@@ -25,12 +25,10 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
-  const minItem = min || -Infinity;
-  const maxItem = max || Infinity;
+function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
   let initNumbers;
   if (numbers) {
-    initNumbers = numbers.filter(item => item >= minItem && item <= maxItem);
+    initNumbers = numbers.filter(item => item >= min && item <= max);
   }
 
   return function() {
