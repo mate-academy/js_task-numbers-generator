@@ -23,10 +23,19 @@
  * @param {number} min - (optional)
  * @param {number} max - (optional)
  *
+ *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
+function createNumbersGenerator(numbers = [], min, max) {
   // write code here
+  let numsOffArr = [...numbers];
+
+  if (min !== undefined && max !== undefined) {
+    numsOffArr = numbers.filter(el => el >= min && el <= max);
+  }
+  return function factory() {
+    return numsOffArr.shift();
+  };
 }
 
 module.exports = createNumbersGenerator;
