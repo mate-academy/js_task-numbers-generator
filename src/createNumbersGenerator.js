@@ -26,7 +26,34 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers, min, max) {
-  // write code here
+  let i = 0;
+  const randomNumbers = [];
+
+  const device = () => {
+    if (arguments.length < 1) {
+      return undefined;
+    }
+
+    if (min && max) {
+      for (; min <= max; min++) {
+        randomNumbers.push(min);
+      }
+
+      const randomInsideNumbers = numbers.filter(el =>
+        randomNumbers.includes(el)
+      );
+
+      while (i < randomInsideNumbers.length) {
+        return randomInsideNumbers[i++];
+      }
+    } else {
+      while (i < numbers.length) {
+        return numbers[i++];
+      }
+    }
+  };
+
+  return device;
 }
 
 module.exports = createNumbersGenerator;
