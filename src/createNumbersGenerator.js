@@ -30,11 +30,9 @@ function createNumbersGenerator(numbers, min, max) {
     ? numbers.filter(num => num >= min && num <= max)
     : numbers;
 
-  function takeMinMaxNumbers() {
+  return () => {
     return numbers === undefined ? undefined : arrNumbers.splice(0, 1)[0];
-  }
-
-  return takeMinMaxNumbers;
+  };
 }
 
 module.exports = createNumbersGenerator;
