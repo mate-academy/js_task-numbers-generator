@@ -25,14 +25,13 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers = [], min, max) {
+function createNumbersGenerator(numbers = [],
+  min = Number.MIN_SAFE_INTEGER, max = Number.MAX_SAFE_INTEGER) {
   let i = 0;
 
   return () => {
-    if (min !== undefined && max !== undefined) {
-      while (i <= numbers.length && (numbers[i] < min || numbers[i] > max)) {
-        i++;
-      }
+    while (i <= numbers.length && (numbers[i] < min || numbers[i] > max)) {
+      i++;
     }
 
     return numbers[i++];
