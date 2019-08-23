@@ -25,16 +25,13 @@
  *
  * @return {function(): *}
  */
-function createNumbersGenerator(numbers = [], min, max) {
-  let index = 0;
-  const minValue = min || -Infinity;
-  const maxValue = max || Infinity;
 
-  const numberArr = numbers.filter(item => (item >= minValue)
-                                        && (item <= maxValue));
+function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
+  let index = 0;
+  const listOfNumbers = numbers.filter(elem => (elem >= min) && (elem <= max));
 
   return function() {
-    return numberArr[index++];
+    return listOfNumbers[index++];
   };
 }
 
