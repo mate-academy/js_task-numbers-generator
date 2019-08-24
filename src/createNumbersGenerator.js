@@ -28,7 +28,9 @@
 
 function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
   let index = 0;
-  const listOfNumbers = numbers.filter(elem => (elem >= min) && (elem <= max));
+
+  const listOfNumbers = numbers.filter(number => (number >= min)
+                                              && (number <= max));
 
   return function() {
     return listOfNumbers[index++];
