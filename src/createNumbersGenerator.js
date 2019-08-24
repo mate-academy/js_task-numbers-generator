@@ -25,31 +25,11 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
-  let numbersArray = undefined;
+function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
+  let countIndex = 0;
+  const numbersArray = numbers.filter((item) => item >= min && item <= max);
 
-  if (min !== undefined && max !== undefined) {
-    numbersArray = numbers.filter((item) => item >= min && item <= max);
-  } else {
-    numbersArray = numbers;
-  }
-
-  return () => {
-    let currentNumber = undefined;
-
-    if (numbersArray === undefined) {
-      return undefined;
-    }
-
-    if (numbersArray.length > 0) {
-      currentNumber = numbersArray[0];
-      numbersArray.shift();
-
-      return currentNumber;
-    } else {
-      return currentNumber;
-    }
-  };
+  return () => numbersArray[countIndex++];
 }
 
 module.exports = createNumbersGenerator;
