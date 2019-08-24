@@ -28,8 +28,6 @@
 
 function createNumbersGenerator(numbers, min, max) {
   let rawNumbers = numbers;
-  const newNumbers = [];
-  let a = 0;
   if (rawNumbers === undefined) {
     rawNumbers = [];
   }
@@ -38,17 +36,10 @@ function createNumbersGenerator(numbers, min, max) {
       element >= min && element <= max
     );
   };
-  for (let i = 0; i < 2; i++) {
-    newNumbers.push(rawNumbers[i]);
-  }
+  rawNumbers = rawNumbers.splice(0, 2);
 
   return function generator() {
-    // if (numbers === undefined) {
-    //   return undefined;
-    // }
-    const b = a;
-    a++;
-    return newNumbers[b];
+    return rawNumbers.shift();
   };
 }
 
