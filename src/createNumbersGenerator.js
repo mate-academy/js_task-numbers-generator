@@ -27,6 +27,7 @@
  */
 function createNumbersGenerator(numbers, min, max) {
   let index = 0;
+
   return () => {
     let resultArray = [];
     if (numbers === undefined) {
