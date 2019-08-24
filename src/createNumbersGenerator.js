@@ -26,20 +26,20 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers, min, max) {
-  let numberOfCallGenerator = 0;
-  let numberListForGenerate = [];
+  let count = 0;
+  let currentNumbers = [];
 
-  if (min !== undefined && max !== undefined) {
-    numberListForGenerate = numbers
+  if (min && max) {
+    currentNumbers = numbers
       .filter(number => number >= min && number <= max);
   } else {
-    numberListForGenerate = numbers;
+    currentNumbers = numbers;
   }
 
   return () => {
-    return numberListForGenerate !== undefined
-      ? numberListForGenerate[numberOfCallGenerator++]
-      : undefined;
+    const resultNumbers = currentNumbers ? currentNumbers[count] : undefined;
+    count++;
+    return resultNumbers;
   };
 }
 
