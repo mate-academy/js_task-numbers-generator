@@ -31,10 +31,7 @@ function createNumbersGenerator(numbers = [], min = -Infinity, max = +Infinity) 
     .filter(number => number >= min && number <= max);
 
   return function() {
-    const returnedNumbers = filteredNumbers[i];
-    i++;
-
-    return returnedNumbers;
+    return filteredNumbers[i++];
   };
 }
 
