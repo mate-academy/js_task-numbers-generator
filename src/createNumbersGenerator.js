@@ -26,14 +26,14 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers = [], min, max) {
-  let numberArr = [];
+  let numberArr;
   let counter = 0;
 
   if (!min && !max) {
     numberArr = numbers;
   } else {
-    numberArr = numbers.filter(element =>
-      element <= max && element >= min);
+    numberArr = numbers.filter(number =>
+      number <= max && number >= min);
   }
 
   return () => {
