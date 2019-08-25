@@ -25,28 +25,12 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
-  let temp;
+function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
+  const numbersInRange = numbers.filter((item) => item >= min && item <= max);
   let i = 0;
 
-  return function f() {
-    if (numbers === undefined) {
-      return undefined;
-    }
-    temp = [...numbers];
-    const numGen = temp[i];
-    ++i;
-
-    if (min >= 0 && max > 0) {
-      if (numGen >= min && numGen <= max) {
-        return numGen;
-      } else if (i < temp.length) {
-        return f();
-      }
-    } else {
-      return numGen;
-    }
+  return () => {
+    return numbersInRange[i++];
   };
 }
-
 module.exports = createNumbersGenerator;
