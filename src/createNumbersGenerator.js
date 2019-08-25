@@ -26,7 +26,25 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers, min, max) {
-  // write code here
+  let count = 0;
+  let arr = numbers;
+
+  if (min && max) {
+    arr = arr.filter((number) => {
+      return number >= min && number <= max;
+    });
+  }
+
+  return () => {
+    if (!arr) {
+      return undefined;
+    }
+
+    const number = arr[count];
+    count++;
+
+    return number;
+  };
 }
 
 module.exports = createNumbersGenerator;
