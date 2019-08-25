@@ -26,7 +26,23 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers, min, max) {
-  // write code here
+  const currentNumbers = numbers;
+
+  return function() {
+    if (currentNumbers === undefined) {
+      return undefined;
+    }
+    for (let i = 0; i < currentNumbers.length; i++) {
+      if (min === undefined && max === undefined) {
+        const currentValue = currentNumbers[i];
+        currentNumbers.splice(currentNumbers.indexOf(currentNumbers[i]), 1);
+        return currentValue;
+      } else if (currentNumbers[i] < max && currentNumbers[i] < min) {
+        currentNumbers.splice(currentNumbers.indexOf(currentNumbers[i]), 1);
+        return currentNumbers[i];
+      }
+    }
+  };
 }
 
 module.exports = createNumbersGenerator;
