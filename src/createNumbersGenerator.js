@@ -25,20 +25,19 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
-  const numberList = (numbers === undefined) ? undefined : numbers;
+function createNumbersGenerator(numbers = undefined, min = -Infinity, max = Infinity) {
   let indicator = 0;
 
   return function() {
-    if (numberList === undefined) {
+    if (numbers === undefined) {
       return undefined;
     }
 
-    const filterNumberList = numberList.filter((element) => {
+    const filteredNumbersList = numbers.filter((element) => {
       return (element >= min && element <= max);
     });
 
-    return filterNumberList[indicator++];
+    return filteredNumbersList[indicator++];
   };
 
 }
