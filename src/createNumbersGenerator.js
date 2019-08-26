@@ -26,10 +26,10 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
-  const arrNumbers = numbers.filter(num => num >= min && num <= max);
+  const filteredNumbers = numbers.filter(num => num >= min && num <= max);
 
   return () => {
-    return numbers === [] ? undefined : arrNumbers.splice(0, 1)[0];
+    return numbers.length < 1 ? undefined : filteredNumbers.shift();
   };
 }
 
