@@ -28,14 +28,9 @@
 function createNumbersGenerator(numbers = [],
   min = Number.MIN_SAFE_INTEGER, max = Number.MAX_SAFE_INTEGER) {
   let i = 0;
+  const filteredNumbers = numbers.filter(item => item >= min && item <= max);
 
-  return () => {
-    while (i <= numbers.length && (numbers[i] < min || numbers[i] > max)) {
-      i++;
-    }
-
-    return numbers[i++];
-  };
+  return () => filteredNumbers[i++];
 }
 
 module.exports = createNumbersGenerator;
