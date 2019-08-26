@@ -29,12 +29,13 @@
 function createNumbersGenerator(numbers = [], min, max) {
   // write code here
   let numsOffArr = [...numbers];
+  let i = 0;
 
   if (min !== undefined && max !== undefined) {
     numsOffArr = numbers.filter(el => el >= min && el <= max);
   }
   return function factory() {
-    return numsOffArr.shift();
+    return numsOffArr[i++];
   };
 }
 
