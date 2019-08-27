@@ -26,7 +26,7 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
+function createNumbersGenerator(numbers = [], min, max) {
   // write code here
   let numsOffArr = [...numbers];
   let i = 0;
