@@ -25,32 +25,17 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
+function createNumbersGenerator(numbers = 0, min, max) {
   let i = 0;
-  const randomNumbers = [];
+  let randomNumbers = [];
 
   const device = () => {
-    if (arguments.length < 1) {
-      return undefined;
-    }
-
     if (min && max) {
-      for (; min <= max; min++) {
-        randomNumbers.push(min);
-      }
-
-      const randomInsideNumbers = numbers.filter(el =>
-        randomNumbers.includes(el)
-      );
-
-      while (i < randomInsideNumbers.length) {
-        return randomInsideNumbers[i++];
-      }
-    } else {
-      while (i < numbers.length) {
-        return numbers[i++];
-      }
+      randomNumbers = numbers.filter(el => el >= min && el <= max);
+      return randomNumbers[i++];
     }
+
+    return numbers[i++];
   };
 
   return device;
