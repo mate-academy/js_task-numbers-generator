@@ -31,6 +31,7 @@ function createNumbersGenerator(numbers, min, max) {
   if (min && max) {
     resultArray = numbers.filter(number => number >= min && number <= max);
   }
+
   return () => {
     if (numbers === undefined) {
       return undefined;
