@@ -28,6 +28,7 @@
 function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
   const filteredArr = numbers.filter(item => item >= min && item <= max);
   let counter = 0;
+
   return () => {
     const temp = counter;
     counter++;
