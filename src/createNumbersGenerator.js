@@ -26,21 +26,12 @@
  * @return {number}
  */
 
-function createNumbersGenerator(numbers, min, max) {
-  let rawNumbers = numbers;
-  if (rawNumbers === undefined) {
-    rawNumbers = [];
-  }
-  if (min !== undefined && max !== undefined) {
-    rawNumbers = rawNumbers.filter(element =>
-      element >= min && element <= max
-    );
-  };
-  rawNumbers = rawNumbers.splice(0, 2);
+function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
+  let counter = 0;
+  const rawNumbers = numbers.filter(element =>
+    element >= min && element <= max);
 
-  return function generator() {
-    return rawNumbers.shift();
-  };
+  return () => rawNumbers[counter++];
 }
 
 module.exports = createNumbersGenerator;
