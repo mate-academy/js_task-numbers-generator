@@ -25,13 +25,10 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
+function createNumbersGenerator(numbers = [], min, max) {
   const currentNumbers = numbers;
 
   return function() {
-    if (currentNumbers === undefined) {
-      return undefined;
-    }
     for (let i = 0; i < currentNumbers.length; i++) {
       if (min === undefined && max === undefined) {
         const currentValue = currentNumbers[i];
@@ -44,5 +41,4 @@ function createNumbersGenerator(numbers, min, max) {
     }
   };
 }
-
 module.exports = createNumbersGenerator;
