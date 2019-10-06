@@ -1,11 +1,7 @@
 'use strict';
 
 /**
- * Write a function (factory) creating a function (device) returning a number
- * from an array given to a factory. Each device call should return the next
- * number from the array. If `min` and `max` were provided the device should
- * return only numbers from the given range (including `min` and `max`). If
- * there is no more matching numbers in the array return undefined.
+ *
  *
  * For example:
  *
@@ -26,7 +22,21 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers, min, max) {
-  // write code here
+  const [numArr, minNum, maxNum] = [numbers, min, max];
+
+  return () => {
+    if (numArr === undefined) {
+      return undefined;
+    } else if (minNum === undefined && maxNum === undefined) {
+      return numArr.shift();
+    }
+
+    for (let i = 0; i < numArr.length; i++) { // Чому верхній
+      if (numArr[i] >= minNum && numArr[i] <= maxNum) {
+        return Number(numArr.splice(i, 1));
+      }
+    }
+  };
 }
 
 module.exports = createNumbersGenerator;
