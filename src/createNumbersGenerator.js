@@ -39,10 +39,9 @@ function createNumbersGenerator(numbers, min, max) {
     if (!filteredNum) {
       return undefined;
     } else {
-      const currentNum = filteredNum[0];
-      filteredNum.splice(0, 1);
+      const currentNum = filteredNum.splice(0, 1);
 
-      return currentNum;
+      return currentNum[0];
     }
   };
 }
