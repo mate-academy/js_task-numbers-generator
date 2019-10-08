@@ -34,7 +34,7 @@ function createNumbersGenerator(numbers, min, max) {
     }
     for (let i = counter; i < numbers.length; i++) {
       counter++;
-      if ((min === undefined || max === undefined)
+      if (min === undefined || max === undefined
         || (numbers[i] >= min && numbers[i] <= max)) {
         return numbers[i];
       }
