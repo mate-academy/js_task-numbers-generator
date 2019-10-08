@@ -28,11 +28,7 @@
 function createNumbersGenerator(numbers, min, max) {
   let filteredNum;
   if (min !== undefined && max !== undefined) {
-    filteredNum = numbers.filter((item) => {
-      if (item >= min && item <= max) {
-        return item;
-      }
-    });
+    filteredNum = numbers.filter((item) => item >= min && item <= max);
   } else { filteredNum = numbers; }
 
   return function() {
