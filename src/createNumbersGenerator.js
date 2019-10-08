@@ -34,10 +34,8 @@ function createNumbersGenerator(numbers, min, max) {
     }
     for (let i = counter; i < numbers.length; i++) {
       counter++;
-      if (min === undefined || max === undefined) {
-        return numbers[i];
-      }
-      if (numbers[i] >= min && numbers[i] <= max) {
+      if ((min === undefined || max === undefined)
+        || (numbers[i] >= min && numbers[i] <= max)) {
         return numbers[i];
       }
     }
