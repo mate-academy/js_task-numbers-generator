@@ -28,11 +28,11 @@
 function createNumbersGenerator(numbers, min, max) {
   let count = 0;
   return () => {
-    if (numbers === undefined) {
+    if (!numbers) {
       return undefined;
     }
     for (let i = 0; i < numbers.length; i++) {
-      if (min !== undefined || max !== undefined) {
+      if (min || max) {
         const selectedNum = +numbers.filter(item =>
           (item >= min && item <= max) ? item : undefined).splice(count, 1);
         count++;
