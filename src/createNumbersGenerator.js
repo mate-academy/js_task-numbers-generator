@@ -27,6 +27,7 @@
  */
 function createNumbersGenerator(numbers, min, max) {
   let index = -1;
+
   return () => {
     index++;
     if (!numbers) {
