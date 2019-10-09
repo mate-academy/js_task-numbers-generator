@@ -29,13 +29,12 @@ function createNumbersGenerator(numbers, min, max) {
   let counter = 0;
 
   return () => {
-    if (numbers === undefined) {
+    if (!numbers) {
       return undefined;
     }
     for (let i = counter; i < numbers.length; i++) {
       counter++;
-      if (min === undefined || max === undefined
-        || (numbers[i] >= min && numbers[i] <= max)) {
+      if (!min || !max || (numbers[i] >= min && numbers[i] <= max)) {
         return numbers[i];
       }
     }
