@@ -28,25 +28,25 @@
 function createNumbersGenerator(numbers, min, max) {
   let index = 0;
 
-  function f() {
+  const f = () => {
     if (!numbers) {
       return undefined;
-    } else {
-      if (!min || !max) {
-        const num = numbers[index];
-        index++;
-
-        return num;
-      } else {
-        const averageValue
-          = numbers.filter(value => value >= min && value <= max);
-        const num = averageValue[index];
-        index++;
-
-        return num;
-      }
     }
-  }
+
+    if (!min || !max) {
+      const num = numbers[index];
+      index++;
+
+      return num;
+    }
+
+    const averageValue
+      = numbers.filter(value => value >= min && value <= max);
+    const n = averageValue[index];
+    index++;
+
+    return n;
+  };
 
   return f;
 }
