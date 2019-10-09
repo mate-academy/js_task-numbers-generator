@@ -25,7 +25,7 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers = [], min = -1000000, max = 1000000) {
+function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
   const arr = numbers.filter(number => (number >= min) && (number <= max));
   let counter = -1;
   return () => {
