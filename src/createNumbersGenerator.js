@@ -22,18 +22,19 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers, min, max) {
-  const [numArr, minNum, maxNum] = [numbers, min, max];
 
   return () => {
-    if (numArr === undefined) {
+    if (!numbers) {
       return undefined;
-    } else if (minNum === undefined && maxNum === undefined) {
-      return numArr.shift();
+    } else if (!min && !max) {
+      return numbers.shift();
     }
 
-    for (let i = 0; i < numArr.length; i++) { // Чому верхній
-      if (numArr[i] >= minNum && numArr[i] <= maxNum) {
-        return Number(numArr.splice(i, 1));
+    for (let i = 0; i < numbers.length; i++) {
+      if (!min && numbers[i] <= max) return Number(numbers.splice(i, 1));
+      if (!max && numbers[i] >= min) return Number(numbers.splice(i, 1));
+      if (numbers[i] >= min && numbers[i] <= max) {
+        return Number(numbers.splice(i, 1));
       }
     }
   };
