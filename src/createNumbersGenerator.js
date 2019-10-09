@@ -25,22 +25,13 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
-  let filteredNumbers;
-  if (numbers !== undefined) {
-    if (min !== undefined && max !== undefined) {
-      filteredNumbers = numbers.filter(item => item >= min && item <= max);
-    } else {
-      filteredNumbers = numbers;
-    }
-  }
+function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
+  const filteredNumbers = numbers.filter(item => item >= min && item <= max);
 
   return () => {
-    if (!filteredNumbers) {
-      return undefined;
-    }
-
-    return filteredNumbers.splice(0, 1)[0];
+    return filteredNumbers.length
+      ? filteredNumbers.splice(0, 1)[0]
+      : undefined;
   };
 }
 
