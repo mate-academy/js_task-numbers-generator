@@ -36,7 +36,6 @@ function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
     for (let i = lastIndex; i < numbers.length; i++) {
 
       lastIndex++;
-      // result = numbers[i];
 
       if (numbers[i] >= min && numbers[i] <= max) {
         result = numbers[i];
