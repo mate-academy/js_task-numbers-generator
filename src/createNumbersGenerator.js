@@ -25,22 +25,19 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
+function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
   if (!numbers) {
     return () => undefined;
   }
 
   let i = 0;
+
   return () => {
     while (i < numbers.length) {
-      if (min && max) {
-        if (numbers[i] >= min && numbers[i] <= max) {
-          return numbers[i++];
-        }
-        i++;
-      } else {
+      if (numbers[i] >= min && numbers[i] <= max) {
         return numbers[i++];
       }
+      i++;
     }
   };
 }
