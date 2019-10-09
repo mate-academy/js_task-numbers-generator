@@ -28,11 +28,11 @@
 function createNumbersGenerator(numbers, min, max) {
   let iterateIndex = 0;
 
-  function arrayFilter() {
+  return () => {
     if (!numbers) {
       return undefined;
     }
-    if (min === undefined || max === undefined) {
+    if (!min || !max) {
       const generatedNumber = numbers[iterateIndex];
       iterateIndex++;
 
@@ -45,8 +45,6 @@ function createNumbersGenerator(numbers, min, max) {
       return generatedNumber;
     }
   }
-
-  return arrayFilter;
 }
 
 module.exports = createNumbersGenerator;
