@@ -25,17 +25,15 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
+function createNumbersGenerator(numbers = '', min = -Infinity, max = Infinity) {
   let index = 0;
   let numbersCopy = numbers;
   return function() {
     if (!numbers) {
       return undefined;
     }
-    if (min && max) {
-      numbersCopy = numbers.filter(element =>
-        element >= min && element <= max);
-    }
+    numbersCopy = numbers.filter(element =>
+      element >= min && element <= max);
     const indexCopy = index;
     index++;
     return numbersCopy[indexCopy];
