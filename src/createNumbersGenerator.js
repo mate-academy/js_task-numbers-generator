@@ -25,23 +25,22 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
-  const arr = numbers;
+function createNumbersGenerator(numbers, min = -Infinity, max = +Infinity) {
   let index = 0;
 
   return () => {
-    if (!arr) {
+    if (!numbers) {
       return undefined;
     }
 
     let num;
 
     if (min && max) {
-      const filtered = arr.filter(n => n >= min && n <= max);
+      const filtered = numbers.filter(number => number >= min && number <= max);
       num = filtered[index];
       index++;
     } else {
-      num = arr[index];
+      num = numbers[index];
       index++;
     }
 
