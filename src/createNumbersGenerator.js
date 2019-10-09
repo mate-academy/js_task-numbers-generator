@@ -28,7 +28,7 @@
 function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
   let result;
   return () => {
-    if (numbers === undefined) {
+    if (!numbers) {
       return undefined;
     }
     for (let i = 0; i < numbers.length; i++) {
