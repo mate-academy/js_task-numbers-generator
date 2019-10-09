@@ -26,21 +26,18 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers, min, max) {
-  let count = 0;
+  const arrNum = (numbers) ? [...numbers] : [];
+  let i = 0;
 
-  return () => {
-    if (!numbers) {
-      return;
+  return function() {
+    let num = arrNum[i];
+    while (num > max || num < min) {
+      i++;
+      num = arrNum[i];
     }
-    for (let i = count; i < numbers.length; i++) {
-      count++;
-      if (!min && !max) {
-        return numbers[i];
-      }
-      if (numbers[i] >= min && numbers[i] <= max) {
-        return numbers[i];
-      }
-    }
+    i++;
+
+    return num;
   };
 }
 
