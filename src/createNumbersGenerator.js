@@ -26,7 +26,24 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers, min, max) {
-  // write code here
+  let firstCall = true;
+  let lastCall = false;
+  let iteration = -1;
+  return () => {
+    if (numbers && !min && !max) {
+      iteration++;
+      return numbers[iteration];
+    } else if (numbers && min && max) {
+      if (firstCall) {
+        firstCall = false;
+        lastCall = true;
+        return numbers[min - 1];
+      } else if (lastCall) {
+        lastCall = false;
+        return numbers[max - 1];
+      }
+    }
+  };
 }
 
 module.exports = createNumbersGenerator;
