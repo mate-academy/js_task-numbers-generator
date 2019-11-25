@@ -26,22 +26,16 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers, min, max) {
-  return function() {
-    if (numbers === undefined) {
-      return undefined;
-    }
+  let nums = numbers;
 
-    if (min === undefined && max === undefined) {
-      return numbers.shift();
-    } else {
-      while (numbers.length > 0) {
-        if (numbers[0] >= min && numbers[0] <= max) {
-          return numbers.shift();
-        } else {
-          numbers.shift();
-        }
-      }
-    }
+  if (arguments.length > 1) {
+    nums = numbers.filter(item => item >= min && item <= max);
+  }
+
+  return function() {
+    return numbers === undefined
+      ? undefined
+      : nums.shift();
   };
 }
 
