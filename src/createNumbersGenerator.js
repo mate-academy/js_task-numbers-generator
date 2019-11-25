@@ -25,16 +25,19 @@
  *
  * @return {function(): number}
  */
-function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
-  let counter = 0;
+function createNumbersGenerator(numbers, min, max) {
+  let numsCopy = numbers;
 
-  const num = numbers.filter(element => element >= min && element < max);
+  if (arguments.length > 1) {
+    numsCopy = numbers.filter(element => element >= min && element <= max);
+  }
 
   return () => {
-    const result = num[counter];
-    counter++;
-    return result;
+    if (!numsCopy) {
+      return undefined;
+    }
+
+    return numsCopy.shift();
   };
 }
-
 module.exports = createNumbersGenerator;
