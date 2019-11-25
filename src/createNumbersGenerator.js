@@ -26,17 +26,12 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers = [], min, max) {
-  let normalizedNumbers = numbers;
-  if (min && max) {
-    normalizedNumbers = numbers.filter(item => (item >= min) && (item <= max));
-  }
-
-  let i = 0;
+  const normalizedNumbers = (min && max)
+    ? numbers.filter(item => (item >= min) && (item <= max))
+    : numbers;
 
   return function() {
-    const res = normalizedNumbers[i];
-    i++;
-    return res;
+    return normalizedNumbers.shift();
   };
 }
 
