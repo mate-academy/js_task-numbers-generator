@@ -25,28 +25,28 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
+function createNumbersGenerator(numbers, min, max) {
   if (numbers === undefined) {
     return function() {
       return undefined;
     };
   };
 
-  let counter = 0;
+  let filteredArr = numbers;
 
-  const filteredArr = [];
-
-  numbers.forEach((element) => {
-    if (element >= min && element < max) {
-      filteredArr.push(element);
+  if (min !== undefined) {
+    filteredArr = filteredArr.filter((element) => {
+      return element >= min && element < max;
     }
+    );
   }
-  );
 
   return function() {
-    counter++;
+    const result = filteredArr[0];
 
-    return filteredArr[counter - 1];
+    filteredArr.shift();
+
+    return result;
   };
 }
 
