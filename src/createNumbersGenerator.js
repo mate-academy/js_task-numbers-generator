@@ -25,18 +25,28 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
-  let counter = 0;
+function createNumbersGenerator(numbers = [], min, max) {
+  const inputArr = [...numbers];
 
   return () => {
-    for (let i = counter; i < numbers.length; i++) {
-      if (numbers[i] >= min && numbers[i] <= max) {
-        counter = i + 1;
+    let result;
 
-        return numbers[i];
+    if (isFinite(min) && isFinite(max)) {
+      for (let i = 0; i < inputArr.length;) {
+        if (inputArr[i] >= min && inputArr[i] <= max) {
+          result = inputArr[0];
+          inputArr.shift();
+
+          return result;
+        }
+        inputArr.shift();
       }
+    } else if (inputArr.length > 0) {
+      result = inputArr[0];
+      inputArr.shift();
+
+      return result;
     }
-    counter = numbers.length;
   };
 }
 
