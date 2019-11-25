@@ -26,16 +26,12 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers = [], min, max) {
-  let count = 0;
+  const device = (min && max)
+    ? numbers.filter(number => number >= min && number <= max)
+    : numbers;
+
   return function() {
-    while (count < numbers.length) {
-      const temp = count;
-      count++;
-      if ((numbers[temp] >= min && numbers[temp] <= max)
-      || (min === undefined && max === undefined)) {
-        return numbers[temp];
-      }
-    }
+    return device.shift();
   };
 }
 
