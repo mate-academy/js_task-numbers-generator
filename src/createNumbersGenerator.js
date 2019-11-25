@@ -25,8 +25,16 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
-  // write code here
+function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
+  const nums = numbers;
+
+  return function generator() {
+    for (const num of nums) {
+      if (num >= min && num <= max) {
+        return nums.splice(nums.indexOf(num), 1)[0];
+      }
+    }
+  };
 }
 
 module.exports = createNumbersGenerator;
