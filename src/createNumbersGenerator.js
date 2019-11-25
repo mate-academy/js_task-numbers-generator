@@ -26,7 +26,31 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers, min, max) {
-  // write code here
+  if (arguments.length === 0) {
+    return () => {};
+  }
+
+  const normalizedNumbers = [];
+
+  if (arguments.length > 1) {
+    for (let j = 0; j < numbers.length; j++) {
+      if ((numbers[j] >= min) && (numbers[j] <= max)) {
+        normalizedNumbers.push(numbers[j]);
+      }
+    }
+  } else {
+    for (let j = 0; j < numbers.length; j++) {
+      normalizedNumbers.push(numbers[j]);
+    }
+  }
+
+  let i = 0;
+
+  return function() {
+    const res = normalizedNumbers[i];
+    i++;
+    return res;
+  };
 }
 
 module.exports = createNumbersGenerator;
