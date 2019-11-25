@@ -25,8 +25,22 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
-  // write code here
+function createNumbersGenerator(numbers, min = 0, max = Infinity) {
+  return function() {
+    let number = 0;
+
+    if (numbers === undefined) {
+      return undefined;
+    }
+
+    number = numbers.shift();
+
+    while (number < min || number > max) {
+      number = numbers.shift();
+    }
+
+    return number;
+  };
 }
 
 module.exports = createNumbersGenerator;
