@@ -25,9 +25,10 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
-  const listOfNumbers = numbers
-    .filter(number => min <= number && number <= max);
+function createNumbersGenerator(numbers = [], min, max) {
+  const listOfNumbers = (min && max)
+    ? numbers.filter(number => min <= number && number <= max)
+    : numbers;
 
   const generator = function() {
     const number = listOfNumbers.shift();
