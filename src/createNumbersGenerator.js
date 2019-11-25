@@ -26,14 +26,12 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
-  const nums = numbers;
+  const numsFiltered = numbers.filter(
+    num => (num >= min && num <= max)
+  );
 
   return function generator() {
-    for (const num of nums) {
-      if (num >= min && num <= max) {
-        return nums.splice(nums.indexOf(num), 1)[0];
-      }
-    }
+    return numsFiltered.shift();
   };
 }
 
