@@ -28,14 +28,13 @@
 
 function createNumbersGenerator(numbers, min, max) {
   let result = numbers;
+  if (min && max) {
+    result = result.filter(item => (item >= min) && (item <= max));
+  }
   return function() {
     if (!numbers) {
       return undefined;
     }
-    if (min && max) {
-      result = result.filter(item => (item >= min) && (item <= max));
-    }
-
     return result.shift();
   };
 }
