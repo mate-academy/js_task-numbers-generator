@@ -23,37 +23,15 @@
  * @param {number} min - (optional)
  * @param {number} max - (optional)
  *
- * @return {number}
+ * @return {function(): number}
  */
 function createNumbersGenerator(numbers = [], min, max) {
-  let i = 0;
+  const nums = (min !== undefined && max !== undefined)
+    ? numbers.filter((item) => (item >= min && item <= max))
+    : numbers;
 
   return function f() {
-    if (min !== undefined && max !== undefined) {
-      const result = numbers.filter(function(item) {
-        if (item >= min && item <= max) {
-          return item;
-        }
-      });
-
-      while (i < result.length) {
-        const a = i;
-        i++;
-
-        if (result[a]) {
-          return result[a];
-        }
-      }
-    } else {
-      while (i < numbers.length) {
-        const a = i;
-        i++;
-
-        if (min === undefined && max === undefined) {
-          return numbers[a];
-        }
-      }
-    }
+    return nums.shift();
   };
 }
 
