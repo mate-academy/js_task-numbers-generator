@@ -30,16 +30,16 @@ function createNumbersGenerator(numbers, min, max) {
     return () => undefined;
   }
 
-  if (min !== undefined || max !== undefined) {
-    for (let i = 0; i < numbers.length; i++) {
-      if (numbers[i] < min || numbers[i] > max) {
-        numbers.splice(i, 1);
-      }
-    }
-  }
+  const filteredNumbers = numbers.filter(
+    number => (
+      min !== undefined && max !== undefined
+        ? number >= min && number <= max
+        : number
+    )
+  );
 
   return function() {
-    return numbers.shift();
+    return filteredNumbers.shift();
   };
 }
 
