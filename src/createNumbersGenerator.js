@@ -23,25 +23,13 @@
  * @param {number} min - (optional)
  * @param {number} max - (optional)
  *
- * @return {number}
+ * @return {function(): number}
  */
-function createNumbersGenerator(numbers, min, max) {
-  let firstCall = min;
-  let lastCall = max;
-  let iteration = 0;
-  return () => {
-    if (numbers && !min && !max) {
-      return numbers[iteration++];
-    } else if (numbers && min && max) {
-      if (firstCall) {
-        firstCall = false;
-        return numbers[min - 1];
-      } else if (lastCall) {
-        lastCall = false;
-        return numbers[max - 1];
-      }
-    }
-  };
+function createNumbersGenerator(numbers = [], min, max) {
+  const list = min && max
+    ? numbers.filter(number => number >= min && number <= max)
+    : numbers;
+  return () => list.shift();
 }
 
 module.exports = createNumbersGenerator;
