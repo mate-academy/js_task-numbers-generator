@@ -25,23 +25,10 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
-  if (arguments.length === 0) {
-    return () => {};
-  }
-
-  const normalizedNumbers = [];
-
+function createNumbersGenerator(numbers = [], min, max) {
+  let normalizedNumbers = numbers;
   if (arguments.length > 1) {
-    for (let j = 0; j < numbers.length; j++) {
-      if ((numbers[j] >= min) && (numbers[j] <= max)) {
-        normalizedNumbers.push(numbers[j]);
-      }
-    }
-  } else {
-    for (let j = 0; j < numbers.length; j++) {
-      normalizedNumbers.push(numbers[j]);
-    }
+    normalizedNumbers = numbers.filter(item => (item >= min) && (item <= max));
   }
 
   let i = 0;
