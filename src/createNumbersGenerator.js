@@ -27,7 +27,7 @@
  */
 function createNumbersGenerator(numbers = [], min, max) {
   let normalizedNumbers = numbers;
-  if (arguments.length > 1) {
+  if (min && max) {
     normalizedNumbers = numbers.filter(item => (item >= min) && (item <= max));
   }
 
