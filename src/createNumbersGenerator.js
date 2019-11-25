@@ -25,14 +25,16 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min = 0, max = Infinity) {
+function createNumbersGenerator(numbers, min, max) {
   if (arguments.length === 0) {
     return () => undefined;
   }
 
-  for (let i = 0; i < numbers.length; i++) {
-    if (numbers[i] < min || numbers[i] > max) {
-      numbers.splice(i, 1);
+  if (min !== undefined || max !== undefined) {
+    for (let i = 0; i < numbers.length; i++) {
+      if (numbers[i] < min || numbers[i] > max) {
+        numbers.splice(i, 1);
+      }
     }
   }
 
