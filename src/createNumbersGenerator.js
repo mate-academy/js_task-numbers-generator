@@ -25,22 +25,18 @@
  *
  * @return {number}
  */
+
 function createNumbersGenerator(numbers, min, max) {
-  const minimum = min || -Infinity;
-  const maximum = max || Infinity;
-  let counter = 0;
-  let result = [];
+  let result = numbers;
   return function() {
     if (!numbers) {
       return undefined;
     }
-    result = numbers.filter(item => (item >= minimum) && (item <= maximum))
-      .filter((item, i, arr) => item === arr[counter]);
-    counter++;
-    if (result.length === 0) {
-      return undefined;
+    if (min && max) {
+      result = result.filter(item => (item >= min) && (item <= max));
     }
-    return +result.join();
+
+    return result.shift();
   };
 }
 
