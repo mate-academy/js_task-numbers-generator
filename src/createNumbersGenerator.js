@@ -30,13 +30,9 @@ function createNumbersGenerator(numbers = [], min, max) {
   const nums = (arguments.length > 1)
     ? numbers.filter(elem => elem >= min && elem <= max)
     : numbers;
-  let i = 0;
 
   return function() {
-    const res = nums[i];
-    i++;
-
-    return res;
+    return nums.shift();
   };
 }
 
