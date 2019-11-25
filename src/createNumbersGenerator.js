@@ -26,20 +26,19 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers, min, max) {
-  let i = 0;
-
   return function() {
     if (numbers === undefined) {
       return undefined;
     }
-    while (i < numbers.length) {
-      const a = i;
-      i++;
-      if (min === undefined && max === undefined) {
-        return numbers[a];
-      } else {
-        if (numbers[a] >= min && numbers[a] <= max) {
-          return numbers[a];
+
+    if (min === undefined && max === undefined) {
+      return numbers.shift();
+    } else {
+      while (numbers.length > 0) {
+        if (numbers[0] >= min && numbers[0] <= max) {
+          return numbers.shift();
+        } else {
+          numbers.shift();
         }
       }
     }
