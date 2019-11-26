@@ -26,8 +26,6 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers, min, max) {
-  let index;
-  let curr = 0;
   let array = numbers;
 
   if (min !== undefined && max !== undefined) {
@@ -39,14 +37,11 @@ function createNumbersGenerator(numbers, min, max) {
   }
 
   return function() {
-    index = curr;
-    curr++;
-
     if (numbers === undefined) {
       return undefined;
     }
 
-    return array[index];
+    return array.shift();
   };
 }
 
