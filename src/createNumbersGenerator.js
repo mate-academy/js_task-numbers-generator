@@ -27,11 +27,10 @@
  */
 function createNumbersGenerator(numbers = [], min, max) {
   const inputArr = [...numbers];
+  let result;
 
-  return () => {
-    let result;
-
-    if (isFinite(min) && isFinite(max)) {
+  if (isFinite(min) && isFinite(max)) {
+    return () => {
       for (let i = 0; i < inputArr.length;) {
         if (inputArr[i] >= min && inputArr[i] <= max) {
           result = inputArr[0];
@@ -41,13 +40,15 @@ function createNumbersGenerator(numbers = [], min, max) {
         }
         inputArr.shift();
       }
-    } else if (inputArr.length > 0) {
+    };
+  } else {
+    return () => {
       result = inputArr[0];
       inputArr.shift();
 
       return result;
-    }
-  };
+    };
+  }
 }
 
 module.exports = createNumbersGenerator;
