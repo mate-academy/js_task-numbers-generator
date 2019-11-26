@@ -26,22 +26,11 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers = [], min, max) {
-  const inputArr = [...numbers];
+  const inputArr = min && max
+    ? numbers.filter(num => num >= min && num <= max)
+    : numbers;
 
-  if (isFinite(min) && isFinite(max)) {
-    return () => {
-      for (let i = 0; i < inputArr.length;) {
-        if (inputArr[i] >= min && inputArr[i] <= max) {
-          return inputArr.shift();
-        }
-        inputArr.shift();
-      }
-    };
-  } else {
-    return () => {
-      return inputArr.shift();
-    };
-  }
+  return () => inputArr.shift();
 }
 
 module.exports = createNumbersGenerator;
