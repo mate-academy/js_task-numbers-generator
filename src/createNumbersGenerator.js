@@ -28,7 +28,9 @@
 function createNumbersGenerator(numbers = [], min, max) {
   let filteredNumbers = numbers;
   if (min !== undefined && max !== undefined) {
-    filteredNumbers = numbers.filter(a => a >= min && a <= max);
+    filteredNumbers = numbers.filter(a => {
+      return a >= min && a <= max;
+    });
   }
   const getNumberByCurrentIndex = function() {
     return filteredNumbers.shift();
