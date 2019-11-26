@@ -25,9 +25,12 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
+function createNumbersGenerator(numbers = [], min, max) {
   let index = 0;
-  const filteredNumbers = numbers.filter(a => a >= min && a <= max);
+  let filteredNumbers = numbers;
+  if (min !== undefined && max !== undefined) {
+    filteredNumbers = numbers.filter(a => a >= min && a <= max);
+  }
   const getNumberByCurrentIndex = function() {
     return filteredNumbers[index++];
   };
