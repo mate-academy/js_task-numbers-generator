@@ -27,26 +27,19 @@
  */
 function createNumbersGenerator(numbers = [], min, max) {
   const inputArr = [...numbers];
-  let result;
 
   if (isFinite(min) && isFinite(max)) {
     return () => {
       for (let i = 0; i < inputArr.length;) {
         if (inputArr[i] >= min && inputArr[i] <= max) {
-          result = inputArr[0];
-          inputArr.shift();
-
-          return result;
+          return inputArr.shift();
         }
         inputArr.shift();
       }
     };
   } else {
     return () => {
-      result = inputArr[0];
-      inputArr.shift();
-
-      return result;
+      return inputArr.shift();
     };
   }
 }
