@@ -26,13 +26,12 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers = [], min, max) {
-  let index = 0;
   let filteredNumbers = numbers;
   if (min !== undefined && max !== undefined) {
     filteredNumbers = numbers.filter(a => a >= min && a <= max);
   }
   const getNumberByCurrentIndex = function() {
-    return filteredNumbers[index++];
+    return filteredNumbers.shift();
   };
   return getNumberByCurrentIndex;
 }
