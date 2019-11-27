@@ -25,30 +25,13 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min = 0, max = 0) {
-  const generator = function() {
-    let num;
+function createNumbersGenerator(numbers = [], min, max) {
+  const result = (min && max) ? numbers
+    .filter(item => item >= min & item <= max) : numbers;
 
-    if (numbers === undefined) {
-      return undefined;
-    }
-
-    if (min === 0 && max === 0) {
-      num = numbers.findIndex((item) => item >= min || item < max);
-    }
-
-    if (min > 0 && max > 0) {
-      num = numbers.findIndex((item) => item >= min && item < max);
-    }
-
-    const res = numbers[num];
-
-    numbers.splice(num, 1);
-
-    return res;
+  return function() {
+    return result.shift();
   };
-
-  return generator;
 }
 
 module.exports = createNumbersGenerator;
