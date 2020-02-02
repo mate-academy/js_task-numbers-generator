@@ -36,9 +36,10 @@ function createNumbersGenerator(numbers, min, max) {
     }
 
     if (argumentsLength > 1) {
-      const newArr = numbers.filter(item => item >= min && item <= max);
+      const filtredArr = numbers.filter(number => number >= min
+        && number <= max);
 
-      generatedNumbers = newArr[startIndex];
+      generatedNumbers = filtredArr[startIndex];
       startIndex++;
 
       return generatedNumbers;
