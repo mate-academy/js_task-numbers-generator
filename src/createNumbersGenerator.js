@@ -25,8 +25,22 @@
  *
  * @return {number}
  */
+
 function createNumbersGenerator(numbers, min, max) {
-  // write code here
+  let copyNumbers = numbers;
+
+  if (arguments.length > 1) {
+    copyNumbers = numbers
+      .filter(number => number >= min && number < max);
+  }
+
+  return () => {
+    if (!copyNumbers) {
+      return undefined;
+    }
+
+    return copyNumbers.shift();
+  };
 }
 
 module.exports = createNumbersGenerator;
