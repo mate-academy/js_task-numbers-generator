@@ -25,8 +25,16 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
-  // write code here
+function createNumbersGenerator(numbers = [], min, max) {
+  let numbersCopy = [ ...numbers ];
+
+  if (min && max) {
+    numbersCopy = numbersCopy.filter(number => number >= min && number <= max);
+  }
+
+  return function() {
+    return numbersCopy.shift();
+  };
 }
 
 module.exports = createNumbersGenerator;
