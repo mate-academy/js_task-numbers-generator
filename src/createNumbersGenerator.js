@@ -4,7 +4,7 @@
  * Write a function (factory) accepting `numbers` array and returning a function
  * (device). Each device call should return the next number from the array.
  * If `min` and `max` were provided the device should return only numbers which
- * are not less than `min` and not creater than `max`). If there is no more
+ * are not less than `min` and not greater than `max`). If there is no more
  * matching numbers in the array return `undefined`.
  *
  * For example:
@@ -25,8 +25,14 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
-  // write code here
+function createNumbersGenerator(numbers = [], min, max) {
+  const sortedArray = typeof min === 'number' && typeof max === 'number'
+    ? [...numbers].filter(num => num >= min && num <= max)
+    : [...numbers];
+
+  return function() {
+    return sortedArray.shift();
+  };
 }
 
 module.exports = createNumbersGenerator;
