@@ -25,21 +25,20 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
-  const numArray = numbers;
+function createNumbersGenerator(numbers = [], min, max) {
+  let numArray = numbers;
   let counter = 0;
 
+  if (arguments.length === 3) {
+    numArray = numbers.filter((item) => item >= min && item <= max);
+  };
+
   return function pseudoRandom() {
-    if (numbers) {
-      const array = numArray.filter((item) => item >= min && item <= max);
-      const currentCounter = counter;
+    const currentCounter = counter;
 
-      counter++;
+    counter++;
 
-      return array[currentCounter];
-    };
-
-    return undefined;
+    return numArray[currentCounter];
   };
 };
 
