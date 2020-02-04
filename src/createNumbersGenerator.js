@@ -29,7 +29,7 @@ function createNumbersGenerator(
   numbers = [],
   min = -Infinity,
   max = +Infinity) {
-  const sortedArray = typeof min === 'number' && typeof max === 'number'
+  const sortedArray = min && max
     ? [...numbers].filter(num => num >= min && num <= max)
     : [...numbers];
 
