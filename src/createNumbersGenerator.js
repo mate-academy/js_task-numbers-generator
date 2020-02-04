@@ -29,9 +29,7 @@ function createNumbersGenerator(
   numbers = [],
   min = -Infinity,
   max = +Infinity) {
-  const sortedArray = min && max
-    ? [...numbers].filter(num => num >= min && num <= max)
-    : [...numbers];
+  const sortedArray = [...numbers].filter(num => num >= min && num <= max);
 
   return () => sortedArray.shift();
 }
