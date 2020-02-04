@@ -23,16 +23,17 @@
  * @param {number} min - (optional)
  * @param {number} max - (optional)
  *
- * @return {number}
+ * @return {function(): number}
  */
-function createNumbersGenerator(numbers = [], min, max) {
+function createNumbersGenerator(
+  numbers = [],
+  min = -Infinity,
+  max = +Infinity) {
   const sortedArray = typeof min === 'number' && typeof max === 'number'
     ? [...numbers].filter(num => num >= min && num <= max)
     : [...numbers];
 
-  return function() {
-    return sortedArray.shift();
-  };
+  return () => sortedArray.shift();
 }
 
 module.exports = createNumbersGenerator;
