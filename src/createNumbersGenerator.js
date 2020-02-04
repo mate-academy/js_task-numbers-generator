@@ -26,19 +26,10 @@
  * @return {number}
  */
 
-function createNumbersGenerator(numbers, min, max) {
-  let copyNumbers = numbers;
-
-  if (arguments.length > 1) {
-    copyNumbers = numbers
-      .filter(number => number >= min && number < max);
-  }
+function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
+  const copyNumbers = numbers.filter(number => number >= min && number < max);
 
   return () => {
-    if (!copyNumbers) {
-      return undefined;
-    }
-
     return copyNumbers.shift();
   };
 }
