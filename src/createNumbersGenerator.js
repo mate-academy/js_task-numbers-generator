@@ -26,14 +26,16 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers = [], min, max) {
-  let numbersCopy = [ ...numbers ];
+  const numbersCopy = ((min && max)
+    ? [...numbers].filter(number => number >= min && number <= max)
+    : [...numbers]);
 
-  if (min && max) {
-    numbersCopy = numbersCopy.filter(number => number >= min && number <= max);
-  }
+  let count = -1;
 
   return function() {
-    return numbersCopy.shift();
+    count += 1;
+
+    return numbersCopy[count];
   };
 }
 
