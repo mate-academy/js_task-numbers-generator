@@ -29,7 +29,7 @@ function createNumbersGenerator(numbers = [], min, max) {
   let counter = 0;
   let arr = numbers;
 
-  if ((arr.length > 0) && (min !== undefined && max !== undefined)) {
+  if (arr.length > 0 && min && max) {
     arr = arr.filter((number) => (number >= min) && (number <= max));
   };
 
