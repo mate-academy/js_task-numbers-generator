@@ -27,15 +27,11 @@
  */
 function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
   let startIndex = 0;
-  let generatedNumber = 0;
-  const filtredArr = numbers.filter(number => number >= min
+  const filtredNumbers = numbers.filter(number => number >= min
     && number <= max);
 
   return function() {
-    generatedNumber = filtredArr[startIndex];
-    startIndex++;
-
-    return generatedNumber;
+    return filtredNumbers[startIndex++];
   };
 }
 
