@@ -28,10 +28,7 @@
 function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
   let modifiedList = numbers;
 
-  if (arguments.length > 1) {
-    modifiedList = numbers
-      .filter(number => number >= min && number <= max);
-  }
+  modifiedList = numbers.filter(number => number >= min && number <= max);
 
   return function() {
     return modifiedList.shift();
