@@ -25,23 +25,17 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
+function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
   let startIndex = 0;
-  let generatedNumbers = [];
-  const argumentsLength = arguments.length;
+  let generatedNumber = 0;
+  const filtredArr = numbers.filter(number => number >= min
+    && number <= max);
 
   return function() {
-    if (!argumentsLength) {
-      return undefined;
-    }
-
-    const filtredArr = numbers.filter(number => number >= min
-      && number <= max);
-
-    generatedNumbers = filtredArr[startIndex];
+    generatedNumber = filtredArr[startIndex];
     startIndex++;
 
-    return generatedNumbers;
+    return generatedNumber;
   };
 }
 
