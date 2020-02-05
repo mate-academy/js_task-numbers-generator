@@ -27,13 +27,14 @@
  */
 function createNumbersGenerator(numbers = [], min, max) {
   let filteredNum = numbers;
+  let counter = 0;
 
   if (min !== undefined && max !== undefined) {
     filteredNum = numbers.filter(item => item >= min && item <= max);
   }
 
   return function() {
-    return filteredNum.shift();
+    return filteredNum[counter++];
   };
 }
 
