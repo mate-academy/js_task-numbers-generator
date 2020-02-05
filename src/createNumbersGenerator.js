@@ -29,18 +29,17 @@ function createNumbersGenerator(numbers, min, max) {
   let count = -1;
 
   return function() {
+    if (!numbers) {
+      return undefined;
+    }
+
     if (min === undefined && max === undefined) {
       count++;
 
-      if (numbers === undefined) {
-        return undefined;
-      }
-
       return numbers[count];
-    } else if (min !== undefined && max !== undefined) {
+    } else {
       const arrMinMax = numbers
-        .filter(element => element >= min)
-        .filter(element => element <= max);
+        .filter(element => element >= min && element <= max);
 
       count++;
 
