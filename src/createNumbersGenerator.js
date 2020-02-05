@@ -27,11 +27,9 @@
  */
 function createNumbersGenerator(numbers = [], min, max) {
   let index = 0;
-  let arr = numbers;
-
-  if (min || max) {
-    arr = numbers.filter(item => (item >= min) && (item <= max));
-  }
+  const arr = ((min || max))
+    ? numbers.filter(item => (item >= min) && (item <= max))
+    : numbers;
 
   return function() {
     const value = arr[index];
