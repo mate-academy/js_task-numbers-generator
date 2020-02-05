@@ -36,15 +36,15 @@ function createNumbersGenerator(numbers, min, max) {
 
     for (let i = index; i < arr.length; i++) {
       if ((arr[i] >= min) && (arr[i] <= max)) {
-        index = (i + 1);
+        index = i + 1;
 
-        return (arr[i]);
+        return arr[i];
       }
 
       if (min === undefined && max === undefined) {
-        index = (i + 1);
+        index = i + 1;
 
-        return (arr[i]);
+        return arr[i];
       }
     }
 
