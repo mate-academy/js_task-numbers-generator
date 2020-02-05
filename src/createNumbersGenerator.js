@@ -26,8 +26,8 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers = [], min, max) {
-  const numbersCopy = ((min && max)
-    ? [...numbers].filter(number => number >= min && number <= max)
+  const filteredNumbers = ((min && max)
+    ? numbers.filter(number => number >= min && number <= max)
     : [...numbers]);
 
   let count = -1;
@@ -35,7 +35,7 @@ function createNumbersGenerator(numbers = [], min, max) {
   return function() {
     count += 1;
 
-    return numbersCopy[count];
+    return filteredNumbers[count];
   };
 }
 
