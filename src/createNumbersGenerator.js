@@ -27,6 +27,12 @@
  */
 function createNumbersGenerator(numbers, min, max) {
   let count = -1;
+  let arrMinMax;
+
+  if (min && max) {
+    arrMinMax = numbers
+      .filter(element => element >= min && element <= max);
+  }
 
   return function() {
     if (!numbers) {
@@ -38,9 +44,6 @@ function createNumbersGenerator(numbers, min, max) {
 
       return numbers[count];
     } else {
-      const arrMinMax = numbers
-        .filter(element => element >= min && element <= max);
-
       count++;
 
       return arrMinMax[count];
