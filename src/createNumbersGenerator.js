@@ -25,7 +25,7 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers = [], min = 0, max = 99999) {
+function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
   const minNumber = numbers.find(item => item >= min);
   let index = numbers.indexOf(minNumber);
 
