@@ -25,9 +25,13 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
+function createNumbersGenerator(numbers = [], min, max) {
   let index = 0;
-  const arr = numbers.filter(item => (item >= min) && (item <= max));
+  let arr = numbers;
+
+  if (min || max) {
+    arr = numbers.filter(item => (item >= min) && (item <= max));
+  }
 
   return function() {
     const value = arr[index];
