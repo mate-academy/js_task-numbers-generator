@@ -25,8 +25,21 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
-  // write code here
+function createNumbersGenerator(numbers = [], min = -Infinity, max = Infinity) {
+  const minNumber = numbers.find(item => item >= min);
+  let index = numbers.indexOf(minNumber);
+
+  function generator() {
+    while (index < numbers.length) {
+      if (numbers[index] >= min && numbers[index] <= max) {
+        return numbers[index++];
+      }
+
+      index++;
+    }
+  };
+
+  return generator;
 }
 
 module.exports = createNumbersGenerator;
