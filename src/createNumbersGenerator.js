@@ -28,7 +28,7 @@
 function createNumbersGenerator(numbers = [], min, max) {
   const filteredNumbers = ((min && max)
     ? numbers.filter(number => number >= min && number <= max)
-    : [...numbers]);
+    : numbers);
 
   let count = -1;
 
