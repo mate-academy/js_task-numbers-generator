@@ -32,7 +32,24 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers, min, max) {
-  // write code here
+  const arr = numbers;
+  const minNum = (min !== undefined) ? min : -Infinity;
+  const maxNum = (max !== undefined) ? max : Infinity;
+  let counter = 0;
+
+  return function() {
+    for (let i = counter; i < arr.length; i++) {
+      if (arr[counter] >= minNum && arr[counter] <= maxNum) {
+        counter++;
+
+        return arr[counter - 1];
+      } else {
+        counter++;
+      };
+    };
+
+    return undefined;
+  };
 }
 
 module.exports = createNumbersGenerator;
