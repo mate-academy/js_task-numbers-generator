@@ -15,10 +15,15 @@
  * console.log(generator1()); // 3
  * console.log(generator1()); // undefined
  *
- * const generator2 = createNumbersGenerator([1, 3, 0, 2, 5], 1.5, 4.5)
+ * const numbers = [1, 0, 3, 2, 5];
+ * const generator2 = createNumbersGenerator(numbers, 1, 3)
+ * console.log(generator2()); // 1
  * console.log(generator2()); // 3
  * console.log(generator2()); // 2
  * console.log(generator2()); // undefined
+ *
+ * const generator3 = createNumbersGenerator([])
+ * console.log(generator3()); // undefined
  *
  * @param {number[]} numbers - array of numbers to return
  * @param {number} min - (optional)

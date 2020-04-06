@@ -2,43 +2,66 @@
 
 const createNumbersGenerator = require('./createNumbersGenerator');
 
-const generator1 = createNumbersGenerator([1, 3]);
-const generator2 = createNumbersGenerator([1, 3, 0, 2, 5], 2, 4);
-const generator3 = createNumbersGenerator();
-
 test('Should return first number from initial array', () => {
-  expect(generator1())
+  const generator = createNumbersGenerator([1, 3]);
+
+  expect(generator())
     .toBe(1);
 });
 
-test('Should return next number from initial array', () => {
-  expect(generator1())
+test('Should return the second number after the second call', () => {
+  const generator = createNumbersGenerator([1, 3]);
+
+  generator();
+
+  expect(generator())
     .toBe(3);
 });
 
-test('Should return undefined if numbers in the array is over', () => {
-  expect(generator1())
+test('Should return undefined if numbers have finished', () => {
+  const generator = createNumbersGenerator([1, 3]);
+
+  generator();
+  generator();
+
+  expect(generator())
     .toBe(undefined);
 });
 
-test('Should return first value in the range between min and max', () => {
-  expect(generator2())
-    .toBe(3);
-});
+test('Should return undefined for all later calls', () => {
+  const generator = createNumbersGenerator([1, 3]);
 
-test('Should return next value in the range between min and max', () => {
-  expect(generator2())
-    .toBe(2);
-});
+  generator();
+  generator();
+  generator();
+  generator();
+  generator();
 
-test('Should return undefined if numbers in the range'
-  + '* between min and max are over', () => {
-  expect(generator2())
+  expect(generator())
     .toBe(undefined);
 });
 
-test('Should return undefined if the initial'
-  + '* value is not passed', () => {
+test('Should correctly handle min value', () => {
+  const generator = createNumbersGenerator([1, 3, 0, 2, 5], 2);
+
+  expect(generator()).toBe(3);
+  expect(generator()).toBe(2);
+  expect(generator()).toBe(5);
+  expect(generator()).toBe(undefined);
+});
+
+test('Should correctly handle max value', () => {
+  const generator = createNumbersGenerator([1, 3, 0, 2, 5], 0, 2);
+
+  expect(generator()).toBe(1);
+  expect(generator()).toBe(0);
+  expect(generator()).toBe(2);
+  expect(generator()).toBe(undefined);
+});
+
+test('Should return undefined numbers array is empty', () => {
+  const generator3 = createNumbersGenerator([]);
+
   expect(generator3())
     .toBe(undefined);
 });
