@@ -31,8 +31,28 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
-  // write code here
+function createNumbersGenerator(numbers, min = 0, max = 0) {
+  let numbersClone = [ ...numbers ];
+  if (min === 0 && max === 0) {
+    return () => {
+      let result = numbersClone.find(el => el);
+      numbersClone.shift();
+
+      return result;
+    };
+  } else {
+    return () => {
+      let resultWithParam = 0;
+      if (max === 0) {
+        resultWithParam = numbersClone.find(el => el >= min);
+      } else {
+        resultWithParam = numbersClone.find(el => (el >= min && el <= max))
+      }
+      numbersClone.splice(numbersClone.indexOf(resultWithParam), 1);
+
+      return resultWithParam;
+    }
+  }
 }
 
 module.exports = createNumbersGenerator;
