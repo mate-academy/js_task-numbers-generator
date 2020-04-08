@@ -32,11 +32,10 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers, min = 0, max = 0) {
-  let numbersClone = [ ...numbers ];
   if (min === 0 && max === 0) {
     return () => {
-      let result = numbersClone.find(el => el);
-      numbersClone.shift();
+      let result = numbers.find(el => el);
+      numbers.shift();
 
       return result;
     };
@@ -44,11 +43,11 @@ function createNumbersGenerator(numbers, min = 0, max = 0) {
     return () => {
       let resultWithParam = 0;
       if (max === 0) {
-        resultWithParam = numbersClone.find(el => el >= min);
+        resultWithParam = numbers.find(el => el >= min);
       } else {
-        resultWithParam = numbersClone.find(el => (el >= min && el <= max))
+        resultWithParam = numbers.find(el => (el >= min && el <= max))
       }
-      numbersClone.splice(numbersClone.indexOf(resultWithParam), 1);
+      numbers.splice(numbers.indexOf(resultWithParam), 1);
 
       return resultWithParam;
     }
