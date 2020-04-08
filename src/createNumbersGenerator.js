@@ -32,7 +32,19 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers, min, max) {
-  // write code here
+  const arr = (min !== undefined && max !== undefined)
+    ? [...numbers.filter(number => (number >= min && number <= max))]
+    : (min)
+      ? [...numbers.filter(number => (number >= min))]
+      : [...numbers];
+
+  return () => {
+    const prevnumber = arr[0];
+
+    arr.shift();
+
+    return prevnumber;
+  };
 }
 
 module.exports = createNumbersGenerator;
