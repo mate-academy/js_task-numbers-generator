@@ -32,7 +32,21 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers, min, max) {
-  // write code here
+  let arr;
+
+  if (min !== undefined && max !== undefined) {
+    arr = numbers.filter(number => number >= min && number <= max);
+  } else if (min !== undefined) {
+    arr = numbers.filter(number => number >= min);
+  } else {
+    arr = numbers;
+  }
+
+  return function() {
+    const number = arr.shift();
+
+    return number;
+  };
 }
 
 module.exports = createNumbersGenerator;
