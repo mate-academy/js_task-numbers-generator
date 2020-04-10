@@ -28,8 +28,6 @@
  * @param {number[]} numbers - array of numbers to return
  * @param {number} min - (optional)
  * @param {number} max - (optional)
- *
- * @return {number}
  */
 function createNumbersGenerator(numbers, min, max) {
   // write code here
