@@ -32,7 +32,19 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers, min, max) {
-  // write code here
+  let counter = 0;
+
+  return () => {
+    while (numbers[counter] < min || numbers[counter] > max) {
+      counter++;
+    }
+
+    const result = numbers[counter];
+
+    counter++;
+
+    return result;
+  };
 }
 
 module.exports = createNumbersGenerator;
