@@ -32,7 +32,28 @@
  * @return {number}
  */
 function createNumbersGenerator(numbers, min, max) {
-  // write code here
+  let iteration = 0;
+
+  return () => {
+    if (numbers.length < 1) {
+      return undefined;
+    } else {
+      for (let i = iteration; i < numbers.length; i++) {
+        iteration++;
+
+        switch (true) {
+          case (numbers[i] <= max && numbers[i] >= min):
+            return numbers[i];
+          case (max === undefined && numbers[i] >= min):
+            return numbers[i];
+          case (numbers[i] <= max && min === undefined):
+            return numbers[i];
+          case (max === undefined && min === undefined):
+            return numbers[i];
+        }
+      }
+    }
+  };
 }
 
 module.exports = createNumbersGenerator;
