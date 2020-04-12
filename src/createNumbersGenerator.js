@@ -38,14 +38,14 @@ function createNumbersGenerator(numbers, min, max) {
         : number;
   });
 
-  let start = 0;
+  let index = 0;
 
   return function() {
-    for (let i = start; i < filtered.length; i++) {
-      start++;
+    const current = index;
 
-      return filtered[i];
-    }
+    index++;
+
+    return filtered[current];
   };
 }
 
