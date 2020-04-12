@@ -31,15 +31,15 @@
  */
 function createNumbersGenerator(numbers, min, max) {
   let index = 0;
-  let filteredArr = [];
+  let filteredArray = [];
 
   const minimum = min || -Infinity;
   const maximum = max || Infinity;
 
   return () => {
-    filteredArr = numbers.filter(item => item >= minimum && item <= maximum);
+    filteredArray = numbers.filter(item => item >= minimum && item <= maximum);
 
-    return filteredArr[index++];
+    return filteredArray[index++];
   };
 }
 
