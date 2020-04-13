@@ -30,22 +30,22 @@
  * @param {number} max - (optional)
  */
 function createNumbersGenerator(numbers, min, max) {
-  const filtered = numbers.filter(number => {
-    return min !== undefined && max !== undefined
-      ? number <= max && number >= min
-      : min !== undefined
-        ? number >= min
-        : number;
-  });
+  let filtered;
 
-  let index = 0;
+  if (min !== undefined && max !== undefined) {
+    filtered = numbers.filter(number => number <= max && number >= min);
+  } else if (min !== undefined) {
+    filtered = numbers.filter(number => number >= min);
+  } else {
+    filtered = numbers;
+  }
+
+  let index = -1;
 
   return function() {
-    const current = index;
-
     index++;
 
-    return filtered[current];
+    return filtered[index];
   };
 }
 
