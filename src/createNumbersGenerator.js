@@ -31,7 +31,7 @@
  *
  * @return {number}
  */
-function createNumbersGenerator(numbers, min, max) {
+function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
   let iteration = 0;
 
   return () => {
@@ -41,15 +41,8 @@ function createNumbersGenerator(numbers, min, max) {
       for (let i = iteration; i < numbers.length; i++) {
         iteration++;
 
-        switch (true) {
-          case (numbers[i] <= max && numbers[i] >= min):
-            return numbers[i];
-          case (max === undefined && numbers[i] >= min):
-            return numbers[i];
-          case (numbers[i] <= max && min === undefined):
-            return numbers[i];
-          case (max === undefined && min === undefined):
-            return numbers[i];
+        if (numbers[i] <= max && numbers[i] >= min) {
+          return numbers[i];
         }
       }
     }
