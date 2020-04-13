@@ -36,9 +36,9 @@ function createNumbersGenerator(numbers, min, max) {
   const minimum = min || -Infinity;
   const maximum = max || Infinity;
 
-  return () => {
-    filteredArray = numbers.filter(item => item >= minimum && item <= maximum);
+  filteredArray = numbers.filter(item => item >= minimum && item <= maximum);
 
+  return () => {
     return filteredArray[index++];
   };
 }
