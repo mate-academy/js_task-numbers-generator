@@ -29,27 +29,22 @@
  * @param {number} min - (optional)
  * @param {number} max - (optional)
  */
-function createNumbersGenerator(numbers, min, max) {
+function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
   let currentItem = 0;
 
   return function() {
     let temp = currentItem;
 
-    if (min !== undefined || max !== undefined) {
-      while (currentItem < numbers.length) {
-        if (numbers[temp] < min || numbers[temp] > max) {
-          currentItem++;
-          temp = currentItem;
-        } else {
-          currentItem++;
+    while (currentItem < numbers.length) {
+      if (numbers[temp] < min || numbers[temp] > max) {
+        currentItem++;
+        temp = currentItem;
+      } else {
+        currentItem++;
 
-          return numbers[temp];
-        }
+        return numbers[temp];
       }
     }
-    currentItem++;
-
-    return numbers[temp];
   };
 }
 module.exports = createNumbersGenerator;
