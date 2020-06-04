@@ -43,9 +43,7 @@ function createNumbersGenerator(numbers, min, max) {
   let counter = 0;
 
   return () => {
-    const number = counter < filteredNumbers.length
-      ? filteredNumbers[counter]
-      : undefined;
+    const number = filteredNumbers[counter];
 
     counter++;
 
