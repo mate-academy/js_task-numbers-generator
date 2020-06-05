@@ -29,8 +29,14 @@
  * @param {number} min - (optional)
  * @param {number} max - (optional)
  */
-function createNumbersGenerator(numbers, min, max) {
-  // write code here
+function createNumbersGenerator(numbers = [], min, max) {
+  const normalizedNumbers = (min && max)
+    ? numbers.filter(item => (item >= min) && (item <= max))
+    : numbers;
+
+  return function() {
+    return normalizedNumbers.shift();
+  };
 }
 
 module.exports = createNumbersGenerator;
