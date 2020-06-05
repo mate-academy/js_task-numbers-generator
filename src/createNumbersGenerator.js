@@ -1,10 +1,6 @@
 'use strict';
 
-function createNumbersGenerator(
-  numbers,
-  min = Math.min(...numbers),
-  max = Math.max(...numbers)
-) {
+function createNumbersGenerator(numbers, min, max) {
   return () => {
     let number = numbers.shift();
 
