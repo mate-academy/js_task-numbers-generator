@@ -32,7 +32,7 @@
 function createNumbersGenerator(numbers, min, max) {
   let index = 0;
 
-  return function() {
+  return () => {
     if (!numbers.length) {
       return;
     }
