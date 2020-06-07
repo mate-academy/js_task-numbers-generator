@@ -31,6 +31,16 @@
  */
 function createNumbersGenerator(numbers, min, max) {
   // write code here
+  let curIndex = 0;
+
+  return () => {
+    while (numbers[curIndex] < min || numbers[curIndex] > max) {
+      curIndex++;
+    }
+    curIndex++;
+
+    return numbers[curIndex - 1];
+  };
 }
 
 module.exports = createNumbersGenerator;
