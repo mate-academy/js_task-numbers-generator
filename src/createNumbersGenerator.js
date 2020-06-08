@@ -31,15 +31,14 @@
  */
 
 function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
-  let i = -1;
+  let i = 0;
 
   return () => {
     while (i < numbers.length) {
-      i++;
-
       if (numbers[i] >= min && numbers[i] <= max) {
-        return numbers[i];
+        return numbers[i++];
       }
+      i++;
     }
 
     return undefined;
