@@ -29,7 +29,7 @@
  * @param {number} min - (optional)
  * @param {number} max - (optional)
  */
-function createNumbersGenerator(numbers, min = Math.log(0), max = Infinity) {
+function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
   let counter = 0;
 
   const tempNumbers = numbers.filter(item => item >= min && item <= max);
