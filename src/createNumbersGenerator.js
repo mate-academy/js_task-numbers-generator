@@ -32,10 +32,10 @@
 function createNumbersGenerator(numbers, min = Math.log(0), max = Infinity) {
   let counter = 0;
 
-  const tempArr = numbers.filter(item => item >= min && item <= max);
+  const tempNumbers = numbers.filter(item => item >= min && item <= max);
 
   return function() {
-    return tempArr[counter++];
+    return tempNumbers[counter++];
   };
 }
 
