@@ -37,11 +37,7 @@ function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
     while (i < numbers.length) {
       i++;
 
-      if (numbers[i] < min) {
-        continue;
-      } else if (numbers[i] > max) {
-        continue;
-      } else if (numbers[i] >= min && numbers[i] <= max) {
+      if (numbers[i] >= min && numbers[i] <= max) {
         return numbers[i];
       }
     }
