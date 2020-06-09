@@ -35,10 +35,8 @@ function createNumbersGenerator(numbers, min = -Infinity, max = +Infinity) {
 
   const filteredNumbers = arguments.length === 1 ? numbers : doFilterNumbers();
 
-  let counter = 0;
-
   return () => {
-    return filteredNumbers[counter++];
+    return filteredNumbers.shift();
   };
 }
 
