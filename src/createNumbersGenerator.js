@@ -30,9 +30,7 @@
  * @param {number} max - (optional)
  */
 function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
-  const changed = max === undefined
-    ? numbers.filter(number => number >= min)
-    : numbers.filter(number => number >= min && number <= max);
+  const changed = numbers.filter(number => number >= min && number <= max);
 
   function generator() {
     return changed.shift();
