@@ -33,15 +33,12 @@
 function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
   let i = 0;
 
-  return () => {
-    while (i < numbers.length) {
-      if (numbers[i] >= min && numbers[i] <= max) {
-        return numbers[i++];
-      }
-      i++;
-    }
+  const filtered = numbers.filter((unit) => {
+    return (unit >= min && unit <= max);
+  });
 
-    return undefined;
+  return () => {
+    return filtered[i++];
   };
 }
 
