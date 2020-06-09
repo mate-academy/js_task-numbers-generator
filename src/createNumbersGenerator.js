@@ -29,17 +29,12 @@
  * @param {number} min - (optional)
  * @param {number} max - (optional)
  */
-function createNumbersGenerator(numbers, min, max) {
+function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
+  // write code here
   let i = 0;
   let cache = numbers;
 
-  if (min !== undefined) {
-    cache = numbers.filter(digits => digits >= min);
-  }
-
-  if (max !== undefined) {
-    cache = numbers.filter(digits => digits <= max);
-  }
+  cache = numbers.filter(digits => digits >= min && digits <= max);
 
   return () => cache[i++];
 }
