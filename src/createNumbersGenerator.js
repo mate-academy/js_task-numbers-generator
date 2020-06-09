@@ -38,11 +38,7 @@ function createNumbersGenerator(numbers, min = -Infinity, max = +Infinity) {
   let counter = 0;
 
   return () => {
-    const number = filteredNumbers[counter];
-
-    counter++;
-
-    return number;
+    return filteredNumbers[counter++];
   };
 }
 
