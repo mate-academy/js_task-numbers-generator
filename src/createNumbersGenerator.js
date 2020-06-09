@@ -37,12 +37,10 @@ function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
     const suitableNumbers = numbers
       .filter(item => item >= min && item <= max);
 
-    while (currentItem < suitableNumbers.length) {
-      temp = currentItem;
-      currentItem++;
+    temp = currentItem;
+    currentItem++;
 
-      return suitableNumbers[temp];
-    }
+    return suitableNumbers[temp];
   };
 };
 
