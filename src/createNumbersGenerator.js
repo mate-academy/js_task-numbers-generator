@@ -34,17 +34,16 @@ function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
 
   return function() {
     let temp = currentItem;
+    const suitableNumbers = numbers
+      .filter(item => item >= min && item <= max);
 
-    while (currentItem < numbers.length) {
-      if (numbers[temp] < min || numbers[temp] > max) {
-        currentItem++;
-        temp = currentItem;
-      } else {
-        currentItem++;
+    while (currentItem < suitableNumbers.length) {
+      temp = currentItem;
+      currentItem++;
 
-        return numbers[temp];
-      }
+      return suitableNumbers[temp];
     }
   };
-}
+};
+
 module.exports = createNumbersGenerator;
