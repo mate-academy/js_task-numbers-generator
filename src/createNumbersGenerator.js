@@ -32,11 +32,7 @@
 function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
   const changed = numbers.filter(number => number >= min && number <= max);
 
-  function generator() {
-    return changed.shift();
-  }
-
-  return generator;
+  return () => changed.shift();
 }
 
 module.exports = createNumbersGenerator;
