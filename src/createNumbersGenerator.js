@@ -34,7 +34,7 @@ function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
   let i = 0;
 
   const filtered = numbers.filter((unit) => {
-    return (unit >= min && unit <= max);
+    return unit >= min && unit <= max;
   });
 
   return () => {
