@@ -31,9 +31,7 @@
  */
 function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
   let currentNumber = 0;
-  let newNumbers = [...numbers];
-
-  newNumbers = numbers.filter(number => number >= min && number <= max);
+  const newNumbers = numbers.filter(number => number >= min && number <= max);
 
   return () => newNumbers[currentNumber++];
 }
