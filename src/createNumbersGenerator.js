@@ -29,14 +29,11 @@
  * @param {number} min - (optional)
  * @param {number} max - (optional)
  */
-function createNumbersGenerator(numbers, min = -Infinity, max = +Infinity) {
-  const doFilterNumbers = () =>
-    numbers.filter((number) => (min <= number) && (max >= number));
-
-  const filteredNumbers = arguments.length === 1 ? numbers : doFilterNumbers();
+function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
+  const cache = numbers.filter((number) => (min <= number) && (max >= number));
 
   return () => {
-    return filteredNumbers.shift();
+    return cache.shift();
   };
 }
 
