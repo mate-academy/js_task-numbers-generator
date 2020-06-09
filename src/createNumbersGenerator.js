@@ -32,9 +32,8 @@
 function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
   // write code here
   let i = 0;
-  let cache = numbers;
 
-  cache = numbers.filter(digits => digits >= min && digits <= max);
+  const cache = numbers.filter(digits => digits >= min && digits <= max);
 
   return () => cache[i++];
 }
