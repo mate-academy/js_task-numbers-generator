@@ -31,14 +31,11 @@
  */
 function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
   let currentItem = 0;
+  const suitableNumbers = numbers
+    .filter(item => item >= min && item <= max);
 
   return function() {
-    const suitableNumbers = numbers
-      .filter(item => item >= min && item <= max);
-
-    currentItem++;
-
-    return suitableNumbers[currentItem - 1];
+    return suitableNumbers[currentItem++];
   };
 };
 
