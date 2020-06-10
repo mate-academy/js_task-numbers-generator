@@ -29,17 +29,9 @@
  * @param {number} min - (optional)
  * @param {number} max - (optional)
  */
-function createNumbersGenerator(numbers, min, max) {
+function createNumbersGenerator(numbers, min = -Infinity, max = Infinity) {
   let counter = 0;
-  let filtered = [...numbers];
-
-  if (min !== undefined) {
-    filtered = filtered.filter(number => number >= min);
-  }
-
-  if (max !== undefined) {
-    filtered = filtered.filter(number => number <= max);
-  }
+  const filtered = numbers.filter(number => number >= min && number <= max);
 
   return () => filtered[counter++];
 }
