@@ -29,8 +29,21 @@
  * @param {number} min - (optional)
  * @param {number} max - (optional)
  */
-function createNumbersGenerator(numbers, min, max) {
-  // write code here
-}
+function createNumbersGenerator(numbers = [], min, max) {
+  let numArray = numbers;
+  let counter = 0;
+
+  if (arguments.length === 3) {
+    numArray = numbers.filter((item) => item >= min && item <= max);
+  };
+
+  return function pseudoRandom() {
+    const currentCounter = counter;
+
+    counter++;
+
+    return numArray[currentCounter];
+  };
+};
 
 module.exports = createNumbersGenerator;
