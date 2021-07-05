@@ -30,7 +30,17 @@
  * @param {number} max - (optional)
  */
 function createNumbersGenerator(numbers, min, max) {
-  // write code here
+  let values = numbers;
+  if (arguments.length > 1) {
+    values = numbers.filter(item => item >= min && item <= max);
+  };
+  return function() {
+    if (!values) {
+      return undefined;
+    };
+
+    return values.shift();
+  };
 }
 
 module.exports = createNumbersGenerator;
