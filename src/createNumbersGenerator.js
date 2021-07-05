@@ -29,8 +29,15 @@
  * @param {number} min - (optional)
  * @param {number} max - (optional)
  */
-function createNumbersGenerator(numbers, min, max) {
+function createNumbersGenerator(numbers = [], min, max) {
   // write code here
+  let filteredNumbers = numbers;
+
+  if (min && max) {
+    filteredNumbers = numbers.filter(item => min <= item && item <= max);
+  }
+
+  return () => { return filteredNumbers.splice(0, 1)[0]; };
 }
 
 module.exports = createNumbersGenerator;
