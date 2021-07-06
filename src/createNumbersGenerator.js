@@ -29,8 +29,22 @@
  * @param {number} min - (optional)
  * @param {number} max - (optional)
  */
-function createNumbersGenerator(numbers, min, max) {
-  // write code here
+function createNumbersGenerator(numbers, min = -Infinity, max = +Infinity) {
+  let someValue = 0;
+
+  function generate() {
+    for (let item = someValue; item < numbers.length; item++) {
+      if (numbers[item] >= min && numbers[item] <= max) {
+        someValue++;
+
+        return numbers[item];
+      } else {
+        someValue++;
+      }
+    }
+  }
+
+  return generate;
 }
 
 module.exports = createNumbersGenerator;
