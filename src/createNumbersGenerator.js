@@ -30,7 +30,19 @@
  * @param {number} max - (optional)
  */
 function createNumbersGenerator(numbers, min, max) {
-  // write code here
-}
+  let iteraite = 0;
+
+  return function() {
+    if (!numbers) {
+      return undefined; // возвращаю явным способом так как ругается линтер
+    } else if (!min && !max) {
+      return numbers[iteraite++];
+    } else {
+      const numbersCopy = numbers.filter(num => num >= min && num <= max);
+
+      return numbersCopy[iteraite++];
+    }
+  };
+};
 
 module.exports = createNumbersGenerator;
