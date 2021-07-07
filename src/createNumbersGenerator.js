@@ -31,6 +31,18 @@
  */
 function createNumbersGenerator(numbers, min, max) {
   // write code here
+
+  const numbersToMatch = (!numbers) ? [] : numbers.slice();
+  const minValue = (!min) ? Math.min(...numbersToMatch) : min;
+  const maxValue = (!max) ? Math.max(...numbersToMatch) : max;
+
+  const matchedNumbers = numbersToMatch
+    .filter(number => number >= minValue && number <= maxValue);
+
+  return function() {
+    const result = matchedNumbers.shift();
+    return result;
+  };
 }
 
 module.exports = createNumbersGenerator;
