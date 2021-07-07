@@ -31,6 +31,30 @@
  */
 function createNumbersGenerator(numbers, min, max) {
   // write code here
+  let i = 0;
+
+  return () => {
+    let index = i;
+
+    if (min === undefined && max === undefined) {
+      i++;
+
+      return numbers[index];
+    } else {
+      while (index <= numbers.length) {
+        if (numbers[index] < min || numbers[index] > max) {
+          index++;
+          i++;
+        } else {
+          i++;
+
+          return numbers[index];
+        }
+      }
+
+      return createNumbersGenerator;
+    }
+  };
 }
 
 module.exports = createNumbersGenerator;
