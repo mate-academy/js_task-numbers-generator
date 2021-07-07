@@ -30,7 +30,19 @@
  * @param {number} max - (optional)
  */
 function createNumbersGenerator(numbers, min, max) {
-  // write code here
+  let actual = 0;
+
+  return () => {
+    if (numbers[actual] < min) {
+      actual = numbers.findIndex((item, i) => item >= min && i > actual);
+    }
+
+    if (numbers[actual] > max) {
+      actual = numbers.findIndex((item, i) => item <= max && i > actual);
+    }
+
+    return (actual === -1) ? undefined : numbers[actual++];
+  };
 }
 
 module.exports = createNumbersGenerator;
